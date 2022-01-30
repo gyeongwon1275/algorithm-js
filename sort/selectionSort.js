@@ -1,4 +1,4 @@
-const insertSort = (array) => {
+const selectionSort = (array) => {
   for (let i = 0; i < array.length; ++i) {
     for (let j = i; j < array.length - 1; ++j) {
       // 만약 현재 최소값 보다 작은 값을 찾으면
@@ -19,5 +19,5 @@ const insertSort = (array) => {
 };
 
 module.exports = {
-  insertSort,
+  selectionSort,
 };
