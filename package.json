@@ -9,7 +9,8 @@
     "prettier-eslint": "^13.0.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "keywords": [
     "algorithm"
