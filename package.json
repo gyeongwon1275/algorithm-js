@@ -17,5 +17,5 @@
   ],
   "author": "gyeongwon1275",
   "license": "MIT",
-  "type": "module"
+  "type": "commonjs"
 }
