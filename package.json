@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "babel-jest": "^27.4.6",
     "jest": "^27.4.7",
     "prettier-eslint": "^13.0.0"
   },
