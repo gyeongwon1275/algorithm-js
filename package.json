@@ -1,0 +1,21 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "study algorithm",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-jest": "^27.4.6",
+    "jest": "^27.4.7",
+    "prettier-eslint": "^13.0.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "algorithm"
+  ],
+  "author": "gyeongwon1275",
+  "license": "MIT",
+  "type": "module"
+}
