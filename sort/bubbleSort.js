@@ -11,7 +11,6 @@ const bubbleSort = (array) => {
         array[j + 1] = temp;
       }
     }
-    // for (let j=0; j<)
   }
   return array;
 };
