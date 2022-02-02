@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "study algorithm",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "prettier": "^2.5.1"
+  },
   "devDependencies": {
     "jest": "^27.4.7",
     "prettier-eslint": "^13.0.0"

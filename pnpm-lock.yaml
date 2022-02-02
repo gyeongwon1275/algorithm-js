@@ -2,7 +2,11 @@ lockfileVersion: 5.3
 
 specifiers:
   jest: ^27.4.7
+  prettier: ^2.5.1
   prettier-eslint: ^13.0.0
+
+dependencies:
+  prettier: 2.5.1
 
 devDependencies:
   jest: 27.4.7
@@ -2603,7 +2607,6 @@ packages:
     resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: true
 
   /pretty-format/23.6.0:
     resolution: {integrity: sha512-zf9NV1NSlDLDjycnwm6hpFATCGl/K1lt0R/GdkAK2O5LN/rwJoB+Mh93gGJjut4YbmecbfgLWVGSTCr0Ewvvbw==}
