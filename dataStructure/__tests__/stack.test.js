@@ -7,6 +7,14 @@ describe("stack", () => {
       const item = 1;
       expect(stack.push(item)).toEqual(item);
     });
+
+    it("초기 크기를 초과해서 데이터를 넣을 때, 새로운 배열을 생성합니다.", () => {
+      const stack = new Stack(2);
+      stack.push(1);
+      stack.push(2);
+      stack.push(3);
+      expect(stack.size).toEqual(4);
+    });
   });
 
   describe("pop", () => {
