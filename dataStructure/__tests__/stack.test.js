@@ -29,7 +29,7 @@ describe("stack", () => {
   });
 
   describe("isEmpty", () => {
-    it("stack의 맨위의 있는 요소를 제거하여 리턴한다.", () => {
+    it("stack 이 비어있는지 확인한다.", () => {
       const stack = new Stack();
       stack.push(1);
       stack.pop();
