@@ -1,8 +1,8 @@
 class ListNode {
-  private element: number;
+  private element;
   private next: ListNode;
 
-  constructor(element: number) {
+  constructor(element) {
     this.element = element;
     this.next = null;
   }
@@ -18,7 +18,7 @@ class ListNode {
 }
 
 class LinkedList {
-  public static append(rootOrNull: ListNode, element: number) {
+  public static append(rootOrNull: ListNode, element) {
     const node = new ListNode(element);
 
     if (rootOrNull) {
@@ -33,12 +33,12 @@ class LinkedList {
       return node;
     }
   }
-  public static prepend(rootOrNull: ListNode, element: number) {
+  public static prepend(rootOrNull: ListNode, element) {
     const node = new ListNode(element);
     node.setNext(rootOrNull);
     return node;
   }
-  public static insertAt(rootOrNull: ListNode, index: number, element: number) {
+  public static insertAt(rootOrNull: ListNode, index: number, element) {
     const node = new ListNode(element);
 
     if (rootOrNull === null) {
@@ -84,7 +84,7 @@ class LinkedList {
       return rootOrNull;
     }
   }
-  public static getIndexOf(rootOrNull: ListNode, element: number) {
+  public static getIndexOf(rootOrNull: ListNode, element) {
     if (rootOrNull === null) {
       return null;
     } else {
@@ -112,6 +112,23 @@ class LinkedList {
       return current || null;
     }
   }
+
+  public static getAllOrNull(rootOrNull: ListNode) {
+    if (rootOrNull === null) {
+      return null;
+    } else {
+      const values = [];
+      let current = rootOrNull;
+
+      while (current) {
+        values.push(current.getData());
+        current = current.getNextOrNull();
+      }
+
+      return values;
+    }
+  }
+
   public static reverse(rootOrNull: ListNode) {
     if (rootOrNull) {
       let current = rootOrNull;

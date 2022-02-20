@@ -127,6 +127,18 @@ describe("LinkedList", () => {
     });
   });
 
+  describe("getAllOrNull", () => {
+    it("연결리스트 전체의 data 반환", () => {
+      let root = LinkedList.append(null, 1);
+      root = LinkedList.append(root, 2);
+      root = LinkedList.append(root, 3);
+      root = LinkedList.append(root, 4);
+      root = LinkedList.append(root, 5);
+
+      expect(LinkedList.getAllOrNull(root)).toEqual([1, 2, 3, 4, 5]);
+    });
+  });
+
   describe("reverse", () => {
     it("연결리스트를 뒤집습니다.", () => {
       let root = LinkedList.append(null, 10);
