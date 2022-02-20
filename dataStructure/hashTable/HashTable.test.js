@@ -6,8 +6,9 @@ describe("HashTable", () => {
       const hashTable = new HashTable();
 
       hashTable.put("shit", 1);
+      hashTable.put("tish", 2);
 
-      expect(hashTable.get("shit")).toBe(1);
+      expect(hashTable.get("shit")).toEqual([{ shit: 1 }, { tish: 2 }]);
     });
   });
 
@@ -17,7 +18,7 @@ describe("HashTable", () => {
 
       hashTable.put("shit", 1);
 
-      expect(hashTable.get("shit")).toBe(1);
+      expect(hashTable.get("shit")).toEqual([{ shit: 1 }]);
 
       hashTable.remove("shit");
       expect(hashTable.get("shit")).toBe(undefined);
