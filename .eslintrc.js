@@ -11,5 +11,6 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-var-requires": ["off"],
     "no-undef": ["off"],
+    "no-prototype-builtins": ["off"],
   },
 };
