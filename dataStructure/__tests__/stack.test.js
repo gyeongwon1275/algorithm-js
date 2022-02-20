@@ -1,4 +1,4 @@
-const Stack = require("../sequential//stack");
+const Stack = require("../sequential/stack");
 
 describe("stack", () => {
   describe("push", () => {
