@@ -1,4 +1,4 @@
-const LinkedList = require("../LinkedList");
+const LinkedList = require("../sequential/LinkedList");
 
 describe("LinkedList", () => {
   describe("append", () => {

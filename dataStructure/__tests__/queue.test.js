@@ -1,4 +1,4 @@
-const Queue = require("../queue");
+const Queue = require("../sequential/queue");
 
 describe("queue", () => {
   describe("enqueue", () => {
