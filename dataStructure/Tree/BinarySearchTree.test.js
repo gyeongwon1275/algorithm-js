@@ -3,7 +3,7 @@ const BST = require("./BinarySearchTree");
 describe("BinarySearchTree", () => {
   describe("insert", () => {
     it("트리에 node 를 삽입합니다.", () => {
-      const binarySearchTree = new BST();
+      const binarySearchTree = new BST(10);
       binarySearchTree.insert(10);
       binarySearchTree.insert(4);
       binarySearchTree.insert(2);
@@ -11,6 +11,11 @@ describe("BinarySearchTree", () => {
       binarySearchTree.insert(5);
       binarySearchTree.insert(7);
       binarySearchTree.insert(12);
+
+      expect(binarySearchTree.search(987)).toBe(false);
+      expect(binarySearchTree.search(3427)).toBe(false);
+      expect(binarySearchTree.search(3)).toBe(false);
+      expect(binarySearchTree.search(11)).toBe(false);
 
       expect(binarySearchTree.search(10)).toBe(true);
       expect(binarySearchTree.search(4)).toBe(true);

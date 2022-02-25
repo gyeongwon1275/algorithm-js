@@ -1,125 +1,120 @@
-class BSTNode {
-  private data: number;
-  private left: BSTNode;
-  private right: BSTNode;
+class BinarySearchTree {
+  private data: number = null;
+  private left: BinarySearchTree = null;
+  private right: BinarySearchTree = null;
 
   constructor(data: number) {
     this.data = data;
-    this.left = null;
-    this.right = null;
   }
 
   public getData() {
     return this.data;
   }
-  public setData(data: number) {
-    this.data = data;
-  }
 
   public getLeft() {
     return this.left;
   }
-  public setLeft(left: BSTNode) {
-    this.left = left;
-  }
-
   public getRight() {
     return this.right;
   }
-  public setRight(right: BSTNode) {
+
+  public setLeft(left: BinarySearchTree) {
+    this.left = left;
+  }
+  public setRight(right: BinarySearchTree) {
     this.right = right;
   }
-}
 
-class BinarySearchTree {
-  private tree: BSTNode;
-  constructor() {
-    this.tree = null;
-  }
+  private insertRecursive(treeNode: BinarySearchTree, data: number) {
+    // 현재 data 가 비어있으면? => 넣는다.
 
-  public getTree() {
-    return this.tree;
-  }
-  public setTree(tree: BSTNode) {
-    this.tree = tree;
-    return this.tree;
-  }
+    // 현재 data 가 비어있지 않으면?
+    // 넣고자하는 수와 현재 data 와 비교한다.
+    // 넣고자 하는 수가 현재 data 보다 작으면 왼쪽에 넣는 걸 시도한다.
+    // 왼쪽이 비어있으면 => 넣는다.
+    // 왼쪽이 비어있지 않으면 넣고자 하는 수와 왼쪽과 비교한다.
 
-  private searchRecursive(node: BSTNode, data: number): boolean {
-    /* 
+    // 넣고자 하는 수가 현재 data 보다 크면 오른쪽에 넣는 걸 시도한다.
+    // 오른쪽이 비어있으면 => 넣는다.
+    // 오른쪽이 비어있지 않으면 넣고자 하는 수와 오른쪽과 비교한다.
 
-    현재 node data와 data 를 비교
+    // 반복되는 것
+    // 현재 root 가 비어있는지 확인
+    // 비어있으면 넣는다.
+    // 비어있지 않으면 현재 root 와 넣으려고 하는 data 를 비교한다.
+    // 왼쪽 또는 오른쪽으로 root 를 변경한다.
 
-    같으면 true 반환 
+    // 탈출조건
+    // 비어있으면 넣는다.
 
-    다르고 현재 node data 보다 data 가 작으면 
+    if (!treeNode) {
+      return new BinarySearchTree(data);
+    }
 
-    왼쪽과 비교 
+    const root = treeNode.getData();
 
-    다르고 현재 node data 보다 data 가 크면 
+    if (root === data) {
+      return;
+    }
 
-    오른쪽과 비교 
-    
-    */
-    if (!node) {
-      return false;
-    } else if (data === node.getData()) {
-      return true;
-    } else if (data < node.getData()) {
-      return this.searchRecursive(node.getLeft(), data);
+    if (root > data) {
+      treeNode.setLeft(treeNode.insertRecursive(treeNode.getLeft(), data));
     } else {
-      return this.searchRecursive(node.getRight(), data);
-    }
-  }
-
-  public search(data: number): boolean {
-    return this.searchRecursive(this.getTree(), data);
-  }
-
-  private insertRecursive(node: BSTNode, data: number): BSTNode {
-    if (!node) {
-      return new BSTNode(data);
+      treeNode.setRight(treeNode.insertRecursive(treeNode.getRight(), data));
     }
 
-    if (data === node.getData()) {
-      return node;
-    } else if (data < node.getData()) {
-      node.setLeft(this.insertRecursive(node.getLeft(), data));
-      return node;
-    } else {
-      node.setRight(this.insertRecursive(node.getRight(), data));
-      return node;
-    }
-    // root 가 비어있는지 확인
-    // 비어있으면 root 에 node 를 넣는다.
-    // 비어있지 않으면 root 와 데이터를 비교한다.
-    // data 가 root 보다 작으면
-    // 왼쪽 자식으로 root node 를 변경한다.
-    // data 가 root 보다 크면
-    // 오른쪽 자식으로 root node 를 변경한다.
+    return treeNode;
   }
 
   public insert(data: number) {
-    const tree = this.getTree();
-    this.setTree(this.insertRecursive(tree, data));
-    return tree;
+    this.insertRecursive(this, data);
+  }
+
+  private inOrderSearchRecursive(treeNode: BinarySearchTree, data: number) {
+    if (!treeNode) {
+      return false;
+    }
+
+    const root = treeNode.getData();
+    if (data === root) {
+      return true;
+    }
+
+    if (data < root) {
+      return this.inOrderSearchRecursive(treeNode.getLeft(), data);
+    }
+
+    return this.inOrderSearchRecursive(treeNode.getRight(), data);
+  }
+
+  public search(data: number, type = "inorder") {
+    // root 가 없으면 false 를 반환한다.
+    // data 와 현재 root 를 비교한다.
+    // 일치하면 true 를 반환한다.
+    // 일치하지 않고 root 보다 작으면
+    // 왼쪽에서 찾는다.
+    // 일치하지 않고 root 보다 크면
+    // 오른쪽에서 찾는다.
+    /* 
+    반복하는 것 
+    root 가 있는지 확인 
+
+    root 가 있으면 data 와 비교
+    
+    data 와 일치하면 true 반환 
+
+    data 가 root 보다 작으면 왼쪽에서 반복
+    data 가 root 보다 크면 오른쪽에서 반복
+    */
+
+    switch (type) {
+      case "inorder":
+        return this.inOrderSearchRecursive(this, data);
+
+      default:
+        return this.inOrderSearchRecursive(this, data);
+    }
   }
 }
 
 module.exports = BinarySearchTree;
-// const binarySearchTree = new BinarySearchTree();
-// binarySearchTree.insert(10);
-// binarySearchTree.insert(4);
-// binarySearchTree.insert(2);
-// binarySearchTree.insert(6);
-// binarySearchTree.insert(5);
-// binarySearchTree.insert(7);
-// binarySearchTree.insert(12);
-
-// console.log(binarySearchTree.search(10));
-// console.log(binarySearchTree.search(4));
-// console.log(binarySearchTree.search(2));
-// console.log(binarySearchTree.search(6));
-// console.log(binarySearchTree.search(5));
-// console.log(binarySearchTree.search(7));
-// console.log(binarySearchTree.search(12));
