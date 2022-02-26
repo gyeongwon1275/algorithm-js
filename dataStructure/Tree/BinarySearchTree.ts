@@ -87,6 +87,83 @@ class BinarySearchTree {
     return this.inOrderSearchRecursive(treeNode.getRight(), data);
   }
 
+  private traversePreOrderRecursive(
+    treeNode: BinarySearchTree,
+    result: number[] = []
+  ) {
+    /* 
+    나 넣음
+    왼쪽 넣음 
+    오른쪽 넣음 
+
+    없으면 탈출 
+    */
+    if (!treeNode) {
+      return;
+    }
+
+    result.push(treeNode.getData());
+    this.traversePreOrderRecursive(treeNode.getLeft(), result);
+    this.traversePreOrderRecursive(treeNode.getRight(), result);
+
+    return result;
+  }
+  public traversePreOrder() {
+    return this.traversePreOrderRecursive(this);
+  }
+
+  private traverseInOrderRecursive(
+    treeNode: BinarySearchTree,
+    result: number[] = []
+  ) {
+    /* 
+   왼쪽 넣음 
+   나 넣음
+   오른쪽 넣음 
+
+    없으면 탈출 
+    */
+    if (!treeNode) {
+      return;
+    }
+
+    this.traverseInOrderRecursive(treeNode.getLeft(), result);
+    result.push(treeNode.getData());
+    this.traverseInOrderRecursive(treeNode.getRight(), result);
+
+    return result;
+  }
+
+  public traverseInOrder() {
+    return this.traverseInOrderRecursive(this);
+  }
+
+  private traversePostOrderRecursive(
+    treeNode: BinarySearchTree,
+    result: number[] = []
+  ) {
+    /* 
+   왼쪽 넣음 
+   오른쪽 넣음 
+   나 넣음
+
+    없으면 탈출 
+    */
+    if (!treeNode) {
+      return;
+    }
+
+    this.traversePostOrderRecursive(treeNode.getLeft(), result);
+    this.traversePostOrderRecursive(treeNode.getRight(), result);
+    result.push(treeNode.getData());
+
+    return result;
+  }
+
+  public traversePostOrder() {
+    return this.traversePostOrderRecursive(this);
+  }
+
   public search(data: number, type = "inorder") {
     // root 가 없으면 false 를 반환한다.
     // data 와 현재 root 를 비교한다.
