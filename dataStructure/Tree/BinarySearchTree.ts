@@ -164,7 +164,7 @@ class BinarySearchTree {
     return this.traversePostOrderRecursive(this);
   }
 
-  public search(data: number, type = "inorder") {
+  public search(data: number) {
     // root 가 없으면 false 를 반환한다.
     // data 와 현재 root 를 비교한다.
     // 일치하면 true 를 반환한다.
@@ -184,13 +184,7 @@ class BinarySearchTree {
     data 가 root 보다 크면 오른쪽에서 반복
     */
 
-    switch (type) {
-      case "inorder":
-        return this.inOrderSearchRecursive(this, data);
-
-      default:
-        return this.inOrderSearchRecursive(this, data);
-    }
+    this.inOrderSearchRecursive(this, data);
   }
 }
 
