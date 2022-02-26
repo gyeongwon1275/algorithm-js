@@ -11,6 +11,10 @@ class BinarySearchTree {
     return this.data;
   }
 
+  public setData(data: number) {
+    this.data = data;
+  }
+
   public getLeft() {
     return this.left;
   }
@@ -70,7 +74,10 @@ class BinarySearchTree {
     this.insertRecursive(this, data);
   }
 
-  private inOrderSearchRecursive(treeNode: BinarySearchTree, data: number) {
+  private inOrderSearchRecursive(
+    treeNode: BinarySearchTree,
+    data: number
+  ): boolean {
     if (!treeNode) {
       return false;
     }
@@ -164,7 +171,7 @@ class BinarySearchTree {
     return this.traversePostOrderRecursive(this);
   }
 
-  public search(data: number) {
+  public search(data: number): boolean {
     // root 가 없으면 false 를 반환한다.
     // data 와 현재 root 를 비교한다.
     // 일치하면 true 를 반환한다.
@@ -184,7 +191,73 @@ class BinarySearchTree {
     data 가 root 보다 크면 오른쪽에서 반복
     */
 
-    this.inOrderSearchRecursive(this, data);
+    return this.inOrderSearchRecursive(this, data);
+  }
+
+  private getNodeToRemove(treeNode: BinarySearchTree, data) {
+    const root = treeNode.getData();
+
+    if (data === root) {
+      return treeNode;
+    }
+    if (data < root) {
+      return this.getNodeToRemove(treeNode.getLeft(), data);
+    }
+
+    return this.getNodeToRemove(treeNode.getRight(), data);
+  }
+
+  private getNodeToRemoveSuccessor(treeNode: BinarySearchTree) {
+    if (!treeNode.getRight()) {
+      return treeNode;
+    }
+
+    return this.getNodeToRemoveSuccessor(treeNode.getRight());
+  }
+
+  private getParent(treeNode: BinarySearchTree, data: number) {
+    if (!treeNode) {
+      return null;
+    }
+
+    const root = treeNode.getData();
+
+    if (data === root) {
+      return null;
+    }
+
+    if (data < root) {
+      const leftNode = treeNode.getLeft();
+      if (data === leftNode.getData()) {
+        return treeNode;
+      }
+
+      return this.getParent(leftNode, data);
+    }
+
+    const rightNode = treeNode.getRight();
+    if (data === rightNode.getData()) {
+      return treeNode;
+    }
+
+    return this.getParent(rightNode, data);
+  }
+  public remove(data: number) {
+    if (this.search(data) === false) {
+      return false;
+    }
+
+    const nodeToRemove = this.getNodeToRemove(this, data);
+    const nodeToRemoveSuccessor = this.getNodeToRemoveSuccessor(
+      nodeToRemove.getLeft()
+    );
+    const dataToChange = nodeToRemoveSuccessor.getData();
+    const parentNode = this.getParent(nodeToRemove, dataToChange);
+    parentNode.setRight(null);
+
+    nodeToRemove.setData(dataToChange);
+
+    return true;
   }
 }
 

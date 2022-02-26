@@ -88,4 +88,28 @@ describe("BinarySearchTree", () => {
       ]);
     });
   });
+
+  describe("remove", () => {
+    it("특정 node 를 삭제합니다.", () => {
+      const binarySearchTree = new BST(6);
+      binarySearchTree.insert(4);
+      binarySearchTree.insert(10);
+      binarySearchTree.insert(2);
+      binarySearchTree.insert(5);
+      binarySearchTree.insert(1);
+      binarySearchTree.insert(3);
+      binarySearchTree.insert(8);
+      binarySearchTree.insert(15);
+      binarySearchTree.insert(7);
+      binarySearchTree.insert(9);
+      binarySearchTree.insert(12);
+
+      binarySearchTree.remove(10);
+      expect(binarySearchTree.search(10)).toBe(false);
+
+      expect(binarySearchTree.traverseInOrder()).toEqual([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 15,
+      ]);
+    });
+  });
 });
