@@ -259,6 +259,52 @@ class BinarySearchTree {
 
     return true;
   }
-}
 
+  public BFS(data: number) {
+    const queue = [this as BinarySearchTree];
+
+    while (queue.length) {
+      const root = queue.shift();
+      if (data === root.getData()) {
+        return true;
+      }
+
+      const left = root.getLeft();
+      if (left) {
+        queue.push(left);
+      }
+      const right = root.getRight();
+      if (right) {
+        queue.push(right);
+      }
+    }
+
+    return false;
+  }
+
+  public DFS(data: number) {
+    const stack = [this as BinarySearchTree];
+
+    while (stack.length) {
+      const root = stack.pop();
+
+      if (data === root.getData()) {
+        return true;
+      }
+
+      const left = root.getLeft();
+      const right = root.getRight();
+
+      if (right) {
+        stack.push(right);
+      }
+
+      if (left) {
+        stack.push(left);
+      }
+    }
+
+    return false;
+  }
+}
 module.exports = BinarySearchTree;

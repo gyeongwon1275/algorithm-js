@@ -112,4 +112,55 @@ describe("BinarySearchTree", () => {
       ]);
     });
   });
+
+  describe("BFS", () => {
+    it("너비우선 탐색을 합니다.", () => {
+      const binarySearchTree = new BST(6);
+      binarySearchTree.insert(4);
+      binarySearchTree.insert(10);
+      binarySearchTree.insert(2);
+      binarySearchTree.insert(5);
+      binarySearchTree.insert(1);
+      binarySearchTree.insert(3);
+      binarySearchTree.insert(8);
+      binarySearchTree.insert(15);
+      binarySearchTree.insert(7);
+      binarySearchTree.insert(9);
+      binarySearchTree.insert(12);
+
+      expect(binarySearchTree.BFS(9)).toBe(true);
+    });
+  });
+
+  describe("DFS", () => {
+    it("깊이우선 탐색을 합니다.", () => {
+      const binarySearchTree = new BST(6);
+      binarySearchTree.insert(4);
+      binarySearchTree.insert(10);
+      binarySearchTree.insert(2);
+      binarySearchTree.insert(5);
+      binarySearchTree.insert(1);
+      binarySearchTree.insert(3);
+      binarySearchTree.insert(8);
+      binarySearchTree.insert(15);
+      binarySearchTree.insert(7);
+      binarySearchTree.insert(9);
+      binarySearchTree.insert(12);
+
+      expect(binarySearchTree.DFS(6)).toBe(true);
+      expect(binarySearchTree.DFS(4)).toBe(true);
+      expect(binarySearchTree.DFS(10)).toBe(true);
+      expect(binarySearchTree.DFS(2)).toBe(true);
+      expect(binarySearchTree.DFS(5)).toBe(true);
+      expect(binarySearchTree.DFS(1)).toBe(true);
+      expect(binarySearchTree.DFS(3)).toBe(true);
+      expect(binarySearchTree.DFS(8)).toBe(true);
+      expect(binarySearchTree.DFS(15)).toBe(true);
+      expect(binarySearchTree.DFS(7)).toBe(true);
+      expect(binarySearchTree.DFS(9)).toBe(true);
+      expect(binarySearchTree.DFS(12)).toBe(true);
+
+      expect(binarySearchTree.DFS(123)).toBe(false);
+    });
+  });
 });
