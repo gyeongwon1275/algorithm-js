@@ -3,14 +3,20 @@ const binarySearch = (array, number) => {
   let end = array.length - 1;
 
   while (start <= end) {
-    const middle = Math.floor(start, end);
+    let middle = Math.floor((start + end) / 2);
+
+    if (array[middle] === number) {
+      return middle;
+    }
 
     if (array[middle] < number) {
       start = middle + 1;
-    } else if (array[middle] === number) {
-      return middle;
-    } else {
+      continue;
+    }
+
+    if (array[middle] > number) {
       end = middle - 1;
+      continue;
     }
   }
 
