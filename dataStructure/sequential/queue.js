@@ -3,11 +3,13 @@ class Queue {
     this.storage = [];
     this.front = 0;
     this.back = 0;
+    this.length = 0;
   }
 
   enqueue(item) {
     this.storage[this.back] = item;
     this.back++;
+    this.length++;
   }
 
   dequeue() {
@@ -15,22 +17,20 @@ class Queue {
       return null;
     }
 
-    const removedItem = this.storage[this.front];
+    const item = this.storage[this.front];
     delete this.storage[this.front];
     this.front++;
 
-    return removedItem;
+    this.length--;
+    return item;
   }
 
   peek() {
-    if (this.isEmpty()) {
-      return null;
-    }
-    return this.storage[this.back - 1];
+    return this.storage[this.front];
   }
 
   isEmpty() {
-    return this.back === 0;
+    return this.length === 0;
   }
 }
 
