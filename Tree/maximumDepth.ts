@@ -4,6 +4,10 @@ function TreeNode(val, left, right) {
   this.right = right === undefined ? null : right;
 }
 
+/* 
+
+using DFS
+
 function maxDepth(root) {
   if (!root) {
     return 0;
@@ -32,6 +36,36 @@ function maxDepth(root) {
   }
 
   return maxDepth;
+} */
+
+// using BFS
+function maxDepth(root) {
+  if (!root) {
+    return 0;
+  }
+
+  const queue = [root];
+
+  let depth = 0;
+
+  while (queue.length) {
+    depth += 1;
+
+    const count = queue.length;
+    for (let i = 0; i < count; i++) {
+      const curRoot = queue.shift();
+
+      if (curRoot.left) {
+        queue.push(curRoot.left);
+      }
+
+      if (curRoot.right) {
+        queue.push(curRoot.right);
+      }
+    }
+  }
+
+  return depth;
 }
 
 module.exports = { TreeNode, maxDepth };

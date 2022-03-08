@@ -12,6 +12,7 @@ describe("maximum depth", () => {
     tree.right = new TreeNode(20);
     tree.right.left = new TreeNode(15);
     tree.right.right = new TreeNode(7);
+
     expect(maxDepth(tree)).toBe(3);
   });
 
@@ -19,6 +20,30 @@ describe("maximum depth", () => {
     const tree = new TreeNode(1);
     tree.left = new TreeNode(null);
     tree.right = new TreeNode(2);
+
     expect(maxDepth(tree)).toBe(2);
+  });
+
+  it("이진 트리의 최대 깊이를 반환합니다.", () => {
+    const tree = new TreeNode(0);
+
+    tree.left = new TreeNode(2);
+    tree.right = new TreeNode(4);
+
+    tree.left.left = new TreeNode(1);
+    tree.left.right = new TreeNode(null);
+
+    tree.right.left = new TreeNode(3);
+    tree.right.right = new TreeNode(-1);
+
+    tree.left.left.left = new TreeNode(5);
+    tree.left.left.right = new TreeNode(1);
+
+    tree.left.right.left = new TreeNode(null);
+    tree.left.right.right = new TreeNode(6);
+
+    tree.right.left.left = new TreeNode(8);
+
+    expect(maxDepth(tree)).toBe(4);
   });
 });
