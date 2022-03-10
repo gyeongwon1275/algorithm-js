@@ -7,10 +7,7 @@ const insertSort = (array) => {
       array[pointer] = array[pointer - 1];
       array[pointer - 1] = temp;
       pointer--;
-
-      console.log(`in result=${array}`);
     }
-    console.log(`out result=${array}`);
   }
 
   return array;
