@@ -1,23 +1,24 @@
 const selectionSort = (array) => {
-  for (let i = 0; i < array.length; ++i) {
-    for (let j = i; j < array.length - 1; ++j) {
-      // 만약 현재 최소값 보다 작은 값을 찾으면
-      if (array[i] > array[j + 1]) {
-        // 현재 최소값 위치와 새로 찾은 최소값의 위치를 바꾼다.
-        let temp = array[j + 1];
+  /* 
+  
+  전체 배열에서 최소값을 찾아서 앞으로 보냄 
+  최소값 찾아서 앞으로 보낼 때 마다 요소 한개 정렬 완료
+  요소 한개 정렬 완료할 때 마다 최소값을 찾는 범위는 한개씩 줄어듦
 
-        array[j + 1] = array[i];
+  */
 
-        array[i] = temp;
+  for (let i = 0; i < array.length; i++) {
+    let min = array[i];
+    for (let j = i + 1; j < array.length; j++) {
+      if (min >= array[j]) {
+        min = array[j];
+        array[j] = array[i];
+        array[i] = min;
       }
-
-      console.log(`in result=${array}`);
     }
-    console.log(`out result=${array}`);
   }
   return array;
 };
-
 module.exports = {
   selectionSort,
 };
