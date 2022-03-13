@@ -1,4 +1,4 @@
-const { mergeSort } = require("../mergeSort.js");
+const { mergeSort } = require("./mergeSort.js");
 
 describe("mergeSort", () => {
   it("배열의 숫자를 오름차순으로 변경해야 합니다.", () => {
