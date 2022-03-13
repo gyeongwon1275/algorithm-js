@@ -23,21 +23,17 @@ const mergeArray = (left, right) => {
   return mergedArray;
 };
 
-const splitArrayRecursive = (array) => {
+const mergeSort = (array) => {
   if (array.length <= 1) {
     return array;
   }
 
   const middleIndex = Math.round(array.length / 2);
 
-  const left = splitArrayRecursive(array.slice(0, middleIndex));
-  const right = splitArrayRecursive(array.slice(middleIndex));
+  const left = mergeSort(array.slice(0, middleIndex));
+  const right = mergeSort(array.slice(middleIndex));
 
   return mergeArray(left, right);
-};
-
-const mergeSort = (array) => {
-  return splitArrayRecursive(array);
 };
 
 module.exports = {
