@@ -1,4 +1,5 @@
-const { reverseList, ListNode } = require("./reverseLinkedList");
+const { reverseList } = require("./reverseLinkedList");
+const ListNode = require("../listNode");
 
 describe("reverseLinkedList", () => {
   const node = new ListNode(1, null);

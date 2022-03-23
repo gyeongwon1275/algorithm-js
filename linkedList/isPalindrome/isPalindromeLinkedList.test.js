@@ -1,13 +1,8 @@
 const isPalindromeLinkedList = require("./isPalindromeLinkedList");
-
+const ListNode = require("../listNode");
 /* 
 Given the head of a singly linked list, return true if it is a palindrome.
 */
-
-function ListNode(val, next) {
-  this.val = val === undefined ? 0 : val;
-  this.next = next === undefined ? null : next;
-}
 
 describe("isPalindromeLinkedList", () => {
   it("연결리스트가 페린드롬 이면 true 반환", () => {

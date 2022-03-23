@@ -1,8 +1,3 @@
-function ListNode(val, next) {
-  this.val = val === undefined ? 0 : val;
-  this.next = next === undefined ? null : next;
-}
-
 const reverseList = function (head) {
   /*    
   
@@ -37,4 +32,4 @@ const reverseList = function (head) {
   return reversed;
 };
 
-module.exports = { reverseList, ListNode };
+module.exports = { reverseList };
