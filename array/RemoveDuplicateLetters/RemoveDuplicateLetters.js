@@ -26,8 +26,6 @@ const removeDuplicateLetters = function (s) {
 
     const partialArr = s.slice(index);
 
-    // console.log("partialArr", partialArr.replace(new RegExp(set[i],'g'), ""));
-
     if ([...new Set(partialArr)].sort().join("") === set.join("")) {
       return (
         set[i] +
