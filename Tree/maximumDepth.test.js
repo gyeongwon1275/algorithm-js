@@ -1,4 +1,5 @@
-const { TreeNode, maxDepth } = require("./maximumDepth");
+const TreeNode = require("./TreeNode");
+const maxDepth = require("./maximumDepth");
 
 /* 
 Given the root of a binary tree, return its maximum depth.
