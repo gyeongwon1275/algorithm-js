@@ -105,7 +105,19 @@ class Relation {
     return inclusive;
   }
 
-  getExclusive(risk, riskList) {}
+  getExclusive(risk, risks) {
+    const exclusive = [];
+
+    const riskList = this._totalSet.find((riskList) => riskList.includes(risk));
+
+    risks.forEach((risk) => {
+      if (!riskList.includes(risk)) {
+        exclusive.push(risk);
+      }
+    });
+
+    return exclusive;
+  }
 }
 
 const inclusives = [
@@ -122,3 +134,6 @@ console.log(relations.getInclusive("q1", ["q2", "q4"]));
 console.log(relations.getInclusive("q2", ["q1", "q3"]));
 console.log(relations.getInclusive("q2", ["q1"]));
 console.log(relations.getInclusive("q4", ["q1"]));
+
+console.log(relations.getExclusive("q3", ["q6", "q5"]));
+console.log(relations.getExclusive("q1", ["q2", "q4"]));
