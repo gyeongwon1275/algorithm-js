@@ -3,6 +3,7 @@ function ListNode(val, next) {
   this.next = next === undefined ? null : next;
 }
 
+/* 
 const insertionSortList = function (head) {
   const total = new ListNode(0);
 
@@ -40,6 +41,37 @@ const insertionSortList = function (head) {
     }
   }
   return total.next;
+};
+*/
+/* 
+
+오름차순 정렬 기준으로 전체 list 중에서 가장 작은 node 를 찾아서 붙여나가는 방식 
+
+=> 사실 따지고 보면 선택정렬의 방법.. 
+
+
+*/
+const insertionSortList = function (head) {
+  let total = new ListNode(0);
+  let current = total;
+
+  while (head) {
+    while (current.next && current.next.val <= head.val) {
+      current = current.next;
+    }
+
+    const currentNextTemp = current.next;
+
+    current.next = head;
+
+    const headNextTemp = head.next;
+    current.next.next = currentNextTemp;
+    head = headNextTemp;
+
+    current = total;
+  }
+
+  return current.next;
 };
 
 module.exports = { insertionSortList, ListNode };
