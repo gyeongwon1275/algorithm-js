@@ -8,13 +8,13 @@ The testcases will be generated such that the answer is unique.
 A substring is a contiguous sequence of characters within the string.
 */
 describe("76. Minimum Window Substring", () => {
-  /*   it('The minimum window substring "BANC" includes "A", "B", and "C" from string t.', () => {
+  it('The minimum window substring "BANC" includes "A", "B", and "C" from string t.', () => {
     expect(minWindow("ADOBECODEBANC", "ABC")).toBe("BANC");
   });
 
   it("s = bbaa t= aba output = baa", () => {
     expect(minWindow("bbaa", "aba")).toBe("baa");
-  }); */
+  });
 
   it("s = bbaac t= aba output = baa", () => {
     expect(minWindow("bbaac", "aba")).toBe("baa");
